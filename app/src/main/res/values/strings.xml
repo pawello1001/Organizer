@@ -2,4 +2,10 @@
     <string name="app_name">Organizer</string>
     <string name="db_name">RestClient.db</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="note_title">Title</string>
+
+    <string name="note_alert_dialog_title">Enter new title</string>
+    <string name="dialog_positive_button">OK</string>
+    <string name="dialog_negative_button">Cancel</string>
 </resources>

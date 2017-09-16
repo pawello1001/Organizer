@@ -4,8 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/note_title_tv"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/note_title_padding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/note_title_textsize"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:hint="@string/note_title"/>
+
     <com.example.pawe.organizer.utils.LinedEditText
-        android:id="@+id/note_et"
+        android:id="@+id/note_text_et"
         android:padding="@dimen/edittext_padding"
         android:scrollbars="vertical"
         android:fadingEdge="vertical"
