@@ -34,7 +34,7 @@ public class NotesFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (mNoteEditText.getLayout() != null && mNoteEditText.getLayout().getLineCount() > 32) {
+                if (mNoteEditText.getLayout() != null && mNoteEditText.getLayout().getLineCount() > getResources().getInteger(R.integer.number_of_lines_notes)) {
                     mNoteEditText.getText().delete(mNoteEditText.getText().length() - 1, mNoteEditText.getText().length());
                 }
             }

@@ -30,7 +30,7 @@ public class LinedEditText extends AppCompatEditText {
         Paint paint = mPaint;
 
         int baseline = getLineBounds(0, rect);
-        for (int i = 0; i < 32; i++) {
+        for (int i = 0; i < getResources().getInteger(R.integer.number_of_lines_notes); i++) {
 
             canvas.drawLine(rect.left, baseline + 1, rect.right, baseline + 1, paint);
             baseline += getLineHeight();
