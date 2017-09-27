@@ -7,8 +7,6 @@ import com.activeandroid.annotation.Table;
 
 @Table(name = "Note")
 public class Note extends Model {
-    @Column(name = "remote_id", unique = true, onUniqueConflict = Column.ConflictAction.REPLACE)
-    private long remoteId;
 
     @Column(name = "title")
     private String title;
@@ -20,9 +18,8 @@ public class Note extends Model {
         super();
     }
 
-    public Note(int remoteId, String title, String text) {
+    public Note(String title, String text) {
         super();
-        this.remoteId = remoteId;
         this.title = title;
         this.text = text;
     }
