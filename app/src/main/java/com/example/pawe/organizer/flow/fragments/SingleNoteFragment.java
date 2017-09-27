@@ -10,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.pawe.organizer.R;
+import com.example.pawe.organizer.models.Note;
 
 import butterknife.ButterKnife;
 
@@ -21,15 +23,20 @@ public class SingleNoteFragment extends Fragment {
 
     private EditText mNoteText;
     private TextView mNoteTitle;
+    private ImageView mCancelNoteIv;
+    private ImageView mSaveNoteIv;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_single_note, container, false);
+        rootView.bringToFront();
 
         ButterKnife.bind(rootView);
         mNoteText = ButterKnife.findById(rootView, R.id.note_text_et);
         mNoteTitle = ButterKnife.findById(rootView, R.id.note_title_tv);
+        mCancelNoteIv = ButterKnife.findById(rootView, R.id.note_cancel_iv);
+        mSaveNoteIv = ButterKnife.findById(rootView, R.id.note_ok_iv);
 
         mNoteText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -76,6 +83,23 @@ public class SingleNoteFragment extends Fragment {
 
                 alertDialog.show();
                 return true;
+            }
+        });
+
+        mCancelNoteIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
+
+        mSaveNoteIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Note note = new Note(mNoteTitle.getText().toString(), mNoteText.getText().toString());
+                note.save();
+
+                getActivity().finish();
             }
         });
 
