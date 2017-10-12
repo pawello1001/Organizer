@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.activeandroid.ActiveAndroid;
 import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.base.activities.BaseActivity;
 
@@ -22,5 +23,6 @@ public class SingleNoteActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_note);
         ButterKnife.bind(this);
+        ActiveAndroid.initialize(this);
     }
 }

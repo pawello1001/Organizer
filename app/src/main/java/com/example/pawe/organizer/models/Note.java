@@ -3,6 +3,9 @@ package com.example.pawe.organizer.models;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
+
+import java.util.List;
 
 
 @Table(name = "Note")
@@ -24,4 +27,23 @@ public class Note extends Model {
         this.text = text;
     }
 
+    public static List<Note> getAllNotes() {
+        return new Select().from(Note.class).orderBy("title").execute();
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }

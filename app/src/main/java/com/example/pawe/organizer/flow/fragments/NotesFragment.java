@@ -13,14 +13,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.flow.activities.MainActivity;
 import com.example.pawe.organizer.flow.activities.SingleNoteActivity;
+import com.example.pawe.organizer.flow.adapters.NoteListAdapter;
+import com.example.pawe.organizer.models.Note;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -32,6 +39,10 @@ public class NotesFragment extends Fragment {
 
     private Button siema;
 
+    private ListView mNotesLv;
+    private List<Note> mNotes;
+    private ArrayAdapter<Note> mAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,6 +51,24 @@ public class NotesFragment extends Fragment {
         ButterKnife.bind(rootView);
 
         siema = ButterKnife.findById(rootView, R.id.siema);
+        mNotesLv = ButterKnife.findById(rootView, R.id.notes_lv);
+
+        mNotes = Note.getAllNotes();
+        mAdapter = new NoteListAdapter(getActivity().getApplicationContext(), mNotes);
+        mAdapter.notifyDataSetChanged();
+        mNotesLv.setAdapter(mAdapter);
+        mNotesLv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                mNotes = Note.getAllNotes();
+                mNotes.get(position).delete();
+                mAdapter.notifyDataSetChanged();
+                mNotes = Note.getAllNotes();
+                mAdapter = new NoteListAdapter(getActivity().getApplicationContext(), mNotes);
+                mNotesLv.setAdapter(mAdapter);
+                return true;
+            }
+        });
 
         siema.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +76,17 @@ public class NotesFragment extends Fragment {
                 SingleNoteActivity.startActivity(getActivity());
             }
         });
-        Log.d("logss", "fragment");
+
         return rootView;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mNotes = Note.getAllNotes();
+        mAdapter = new NoteListAdapter(getActivity().getApplicationContext(), mNotes);
+        mNotesLv.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+    }
+
 }

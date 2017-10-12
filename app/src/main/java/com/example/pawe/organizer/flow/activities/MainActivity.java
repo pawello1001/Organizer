@@ -8,11 +8,18 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import com.activeandroid.ActiveAndroid;
 import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.base.activities.BaseActivity;
+import com.example.pawe.organizer.flow.adapters.NoteListAdapter;
 import com.example.pawe.organizer.flow.adapters.SectionsPagerAdapter;
 import com.example.pawe.organizer.flow.fragments.SingleNoteFragment;
+import com.example.pawe.organizer.models.Note;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,7 +47,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-        Log.d("log", "witom");
+        ActiveAndroid.initialize(this);
         setSupportActionBar(mToolbar);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), TABS_COUNTER);
