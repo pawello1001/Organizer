@@ -7,6 +7,7 @@ import com.example.pawe.organizer.dagger.ApplicationComponent;
 import com.example.pawe.organizer.dagger.DaggerApplicationComponent;
 import com.example.pawe.organizer.dagger.module.ApplicationModule;
 import com.example.pawe.organizer.flow.activities.SingleNoteActivity;
+import com.example.pawe.organizer.flow.fragments.NotesFragment;
 
 
 public class MyApplication extends Application {

@@ -43,12 +43,18 @@ public class NotesFragment extends Fragment {
     private List<Note> mNotes;
     private ArrayAdapter<Note> mAdapter;
 
+    public String title;
+    public String text;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_notes, container, false);
 
         ButterKnife.bind(rootView);
+
+        title = "";
+        text = "";
 
         siema = ButterKnife.findById(rootView, R.id.siema);
         mNotesLv = ButterKnife.findById(rootView, R.id.notes_lv);
@@ -69,13 +75,25 @@ public class NotesFragment extends Fragment {
                 return true;
             }
         });
+        mNotesLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                title = mNotes.get(position).getTitle();
+                text = mNotes.get(position).getText();
+                SingleNoteActivity.startActivity(getActivity(), title, text);
+            }
+        });
 
         siema.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SingleNoteActivity.startActivity(getActivity());
+                title = "";
+                text = "";
+                SingleNoteActivity.startActivity(getActivity(), title, text);
             }
         });
+
+
 
         return rootView;
     }

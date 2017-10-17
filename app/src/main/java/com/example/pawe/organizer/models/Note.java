@@ -31,6 +31,10 @@ public class Note extends Model {
         return new Select().from(Note.class).orderBy("title").execute();
     }
 
+    public static Note getNote(String title, String text) {
+        return new Select().from(Note.class).where("title = ?", title).and("text = ?", text).executeSingle();
+    }
+
     public String getTitle() {
         return title;
     }

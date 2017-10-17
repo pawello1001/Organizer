@@ -1,30 +1,17 @@
 package com.example.pawe.organizer.flow.activities;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import com.activeandroid.ActiveAndroid;
 import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.base.activities.BaseActivity;
-import com.example.pawe.organizer.flow.adapters.NoteListAdapter;
 import com.example.pawe.organizer.flow.adapters.SectionsPagerAdapter;
-import com.example.pawe.organizer.flow.fragments.SingleNoteFragment;
-import com.example.pawe.organizer.models.Note;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Optional;
 
 public class MainActivity extends BaseActivity {
 

@@ -34,9 +34,7 @@ public class NoteListAdapter extends ArrayAdapter<Note> {
     }
 
     public View getView(int position, View view, @NonNull ViewGroup parent) {
-        //LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
         view = LayoutInflater.from(getContext()).inflate(R.layout.note_list_item, parent, false);
-        //view = inflater.inflate(R.layout.note_list_item, parent, false);
 
         mNoteTitleTv = ButterKnife.findById(view, R.id.note_list_title_tv);
         mNoteTitleTv.setText(mNotes.get(position).getTitle());

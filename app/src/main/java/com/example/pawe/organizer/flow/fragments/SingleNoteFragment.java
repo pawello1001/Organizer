@@ -16,8 +16,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.pawe.organizer.R;
+import com.example.pawe.organizer.flow.activities.SingleNoteActivity;
 import com.example.pawe.organizer.models.Note;
 
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
@@ -27,6 +30,9 @@ public class SingleNoteFragment extends Fragment {
     private TextView mNoteTitle;
     private ImageView mCancelNoteIv;
     private ImageView mSaveNoteIv;
+
+    private String title;
+    private String text;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +45,16 @@ public class SingleNoteFragment extends Fragment {
         mNoteTitle = ButterKnife.findById(rootView, R.id.note_title_tv);
         mCancelNoteIv = ButterKnife.findById(rootView, R.id.note_cancel_iv);
         mSaveNoteIv = ButterKnife.findById(rootView, R.id.note_ok_iv);
+
+        final Bundle extras = getActivity().getIntent().getExtras();
+        if (extras != null) {
+            title = extras.getString("title");
+            text = extras.getString("text");
+        }
+
+
+        mNoteText.setText(text);
+        mNoteTitle.setText(title);
 
         mNoteText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -98,9 +114,15 @@ public class SingleNoteFragment extends Fragment {
         mSaveNoteIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Note note = new Note(mNoteTitle.getText().toString(), mNoteText.getText().toString());
-                note.save();
-
+                if (title.equals("") && text.equals("")) {
+                    Note note = new Note(mNoteTitle.getText().toString(), mNoteText.getText().toString());
+                    note.save();
+                } else {
+                    Note note = Note.getNote(title, text);
+                    note.setTitle(mNoteTitle.getText().toString());
+                    note.setText(mNoteText.getText().toString());
+                    note.save();
+                }
                 getActivity().finish();
             }
         });
