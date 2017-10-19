@@ -48,6 +48,10 @@
             android:name=".flow.activities.SingleNoteActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"/>
+        <activity
+            android:name=".flow.activities.SingleAddressActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"/>
         <activity android:name=".MapsActivity"/>
     </application>
 

@@ -8,4 +8,14 @@
         android:text="siema mapy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <ListView
+        android:id="@+id/addresses_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="outsideOverlay"
+        android:paddingBottom="@dimen/notes_lv_height"
+        android:dividerHeight="@dimen/notes_lv_divider_height"
+        android:divider="@color/black"/>
 </LinearLayout>

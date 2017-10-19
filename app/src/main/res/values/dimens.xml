@@ -12,4 +12,9 @@
 
     <dimen name="notes_lv_height">75dp</dimen>
     <dimen name="notes_lv_divider_height">1dp</dimen>
+
+    <dimen name="address_name_textsize">14sp</dimen>
+
+    <dimen name="icon_address_size">32dp</dimen>
+    <dimen name="icon_address_margin">7dp</dimen>
 </resources>

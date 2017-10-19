@@ -30,7 +30,6 @@ public class NoteListAdapter extends ArrayAdapter<Note> {
         super(context, R.layout.note_list_item, notes);
         mContext = context;
         mNotes = notes;
-        Log.d("notes counter", String.valueOf(mNotes.size()));
     }
 
     public View getView(int position, View view, @NonNull ViewGroup parent) {

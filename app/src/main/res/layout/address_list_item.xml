@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="72dp">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8">
+        <TextView
+            android:id="@+id/address_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/note_title_textsize"
+            android:textStyle="bold"
+            android:hint="Name"/>
+        <TextView
+            android:id="@+id/address_address_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/address_name_tv"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/address_name_textsize"
+            android:hint="Address"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2">
+        <ImageView
+            android:id="@+id/address_location_iv"
+            android:layout_width="@dimen/icon_address_size"
+            android:layout_height="@dimen/icon_address_size"
+            android:layout_margin="@dimen/icon_address_margin"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_location"/>
+    </RelativeLayout>
+
+</LinearLayout>

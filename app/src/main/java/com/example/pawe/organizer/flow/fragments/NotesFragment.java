@@ -63,15 +63,34 @@ public class NotesFragment extends Fragment {
         mAdapter = new NoteListAdapter(getActivity().getApplicationContext(), mNotes);
         mAdapter.notifyDataSetChanged();
         mNotesLv.setAdapter(mAdapter);
+
         mNotesLv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                mNotes = Note.getAllNotes();
-                mNotes.get(position).delete();
-                mAdapter.notifyDataSetChanged();
-                mNotes = Note.getAllNotes();
-                mAdapter = new NoteListAdapter(getActivity().getApplicationContext(), mNotes);
-                mNotesLv.setAdapter(mAdapter);
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                alertDialog.setMessage(R.string.dialog_delete_note);
+                alertDialog.setTitle(R.string.dialog_delete_note_title);
+                alertDialog.setPositiveButton(getString(R.string.dialog_positive_button),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                mNotes = Note.getAllNotes();
+                                mNotes.get(position).delete();
+                                mAdapter.notifyDataSetChanged();
+                                mNotes = Note.getAllNotes();
+                                mAdapter = new NoteListAdapter(getActivity().getApplicationContext(), mNotes);
+                                mNotesLv.setAdapter(mAdapter);
+                            }
+                        });
+                alertDialog.setNegativeButton(getString(R.string.dialog_negative_button),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        }
+                );
+                alertDialog.show();
                 return true;
             }
         });
