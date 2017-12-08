@@ -20,6 +20,7 @@ import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.base.MyApplication;
 import com.example.pawe.organizer.base.activities.BaseActivity;
 import com.example.pawe.organizer.flow.adapters.SectionsPagerAdapter;
+import com.example.pawe.organizer.utils.CustomSnackBar;
 
 import java.io.IOException;
 import java.util.List;
@@ -82,7 +83,8 @@ public class MainActivity extends BaseActivity implements LocationListener{
 
     @Override
     public void onProviderDisabled(String provider) {
-        Toast.makeText(this, R.string.address_no_gps, Toast.LENGTH_SHORT).show();
+        CustomSnackBar.makeErrorSnackBar(this, getResources().getString(R.string.address_no_gps), true);
+        //Toast.makeText(this, R.string.address_no_gps, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -91,10 +93,12 @@ public class MainActivity extends BaseActivity implements LocationListener{
         switch (requestCode) {
             case 1340: {
                 if (grantResult.length > 0 || grantResult[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, R.string.permission_granted, Toast.LENGTH_SHORT).show();
+                    CustomSnackBar.makeErrorSnackBar(this, getResources().getString(R.string.permission_granted), false);
+                    //Toast.makeText(this, R.string.permission_granted, Toast.LENGTH_SHORT).show();
                     getCurrentLocation();
                 } else {
-                    Toast.makeText(this, R.string.permission_denied, Toast.LENGTH_SHORT).show();
+                    CustomSnackBar.makeErrorSnackBar(this, getResources().getString(R.string.permission_denied), false);
+                    //Toast.makeText(this, R.string.permission_denied, Toast.LENGTH_SHORT).show();
                 }
                 return;
             }
@@ -113,7 +117,10 @@ public class MainActivity extends BaseActivity implements LocationListener{
 
     public void setCurrentAddress() {
         getCurrentLocation();
-        if (currentLocation == null) Toast.makeText(this, R.string.address_no_gps, Toast.LENGTH_LONG).show();
+        if (currentLocation == null) {
+            CustomSnackBar.makeErrorSnackBar(this, getResources().getString(R.string.address_no_gps), true);
+            //Toast.makeText(this, R.string.address_no_gps, Toast.LENGTH_LONG).show();
+        }
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         List<Address> addresses;
 
@@ -133,7 +140,8 @@ public class MainActivity extends BaseActivity implements LocationListener{
 
             add.save();
         } catch (IOException ex) {
-            Toast.makeText(this, R.string.address_cannot_find, Toast.LENGTH_LONG).show();
+            CustomSnackBar.makeErrorSnackBar(this, getResources().getString(R.string.address_cannot_find), true);
+            //Toast.makeText(this, R.string.address_cannot_find, Toast.LENGTH_LONG).show();
         }
     }
 }

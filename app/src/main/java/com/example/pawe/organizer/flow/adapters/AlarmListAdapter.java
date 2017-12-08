@@ -20,6 +20,7 @@ import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.flow.activities.SingleAlarmActivity;
 import com.example.pawe.organizer.flow.fragments.AlarmsFragment;
 import com.example.pawe.organizer.models.Alarm;
+import com.example.pawe.organizer.utils.KeyboardHider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +78,7 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
                 alertDialog.setPositiveButton(R.string.dialog_positive_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        KeyboardHider.hideKeyboard(mContext);
                         mAlarms = Alarm.getAllAlarms();
                         mAlarms.get(position).delete();
                         notifyDataSetChanged();
@@ -88,6 +90,7 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
                 alertDialog.setNegativeButton(R.string.dialog_negative_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        KeyboardHider.hideKeyboard(mContext);
                         dialog.cancel();
                     }
                 });

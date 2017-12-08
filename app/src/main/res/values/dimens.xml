@@ -21,4 +21,6 @@
 
     <dimen name="alarm_switch_margin">40dp</dimen>
 
+    <dimen name="spacing_normal">30dp</dimen>
+
 </resources>

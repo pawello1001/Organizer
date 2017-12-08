@@ -50,7 +50,7 @@ public class AddressesFragment extends Fragment {
         mAddressesLv = ButterKnife.findById(rootView, R.id.addresses_lv);
 
         mAddresses = Address.getAllAddresses();
-        mAdapter = new AddressListAdapter(getActivity().getApplicationContext(), mAddresses);
+        mAdapter = new AddressListAdapter(getActivity(), mAddresses);
         mAdapter.notifyDataSetChanged();
         mAddressesLv.setAdapter(mAdapter);
 
@@ -68,7 +68,7 @@ public class AddressesFragment extends Fragment {
                                 mAddresses.get(position).delete();
                                 mAdapter.notifyDataSetChanged();
                                 mAddresses = Address.getAllAddresses();
-                                mAdapter = new AddressListAdapter(getActivity().getApplicationContext(), mAddresses);
+                                mAdapter = new AddressListAdapter(getActivity(), mAddresses);
                                 mAddressesLv.setAdapter(mAdapter);
                             }
                         });
@@ -108,7 +108,7 @@ public class AddressesFragment extends Fragment {
             public void onClick(View v) {
                 ((MainActivity)getActivity()).setCurrentAddress();
                 mAddresses = Address.getAllAddresses();
-                mAdapter = new AddressListAdapter(getActivity().getApplicationContext(), mAddresses);
+                mAdapter = new AddressListAdapter(getActivity(), mAddresses);
                 mAddressesLv.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
             }
@@ -121,7 +121,7 @@ public class AddressesFragment extends Fragment {
     public void onResume() {
         super.onResume();
         mAddresses = Address.getAllAddresses();
-        mAdapter = new AddressListAdapter(getActivity().getApplicationContext(), mAddresses);
+        mAdapter = new AddressListAdapter(getActivity(), mAddresses);
         mAddressesLv.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }

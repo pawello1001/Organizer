@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.models.Address;
+import com.example.pawe.organizer.utils.CustomSnackBar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,9 +74,11 @@ public class DataLongOperationAsynchTask extends AsyncTask<String, Void, String>
             Log.d("longitude", "" + lng);
             Address addr = new Address(name, address, lat, lng);
             addr.save();
+            mContext.finish();
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(mContext, R.string.address_error, Toast.LENGTH_SHORT).show();
+            CustomSnackBar.makeErrorSnackBar(mContext, mContext.getResources().getString(R.string.address_error), true);
+            //Toast.makeText(mContext, R.string.address_error, Toast.LENGTH_SHORT).show();
         }
     }
 

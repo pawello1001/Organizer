@@ -4,32 +4,24 @@ package com.example.pawe.organizer.flow.fragments;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.flow.activities.SingleAlarmActivity;
 import com.example.pawe.organizer.flow.adapters.AlarmListAdapter;
-import com.example.pawe.organizer.flow.adapters.NoteListAdapter;
 import com.example.pawe.organizer.flow.services.AlarmReceiver;
 import com.example.pawe.organizer.models.Alarm;
-import com.example.pawe.organizer.models.Note;
+import com.example.pawe.organizer.utils.CustomSnackBar;
 
-import java.sql.Time;
 import java.util.Calendar;
 import java.util.List;
 
@@ -54,7 +46,7 @@ public class AlarmsFragment extends Fragment {
     private static Intent sReceiverIntent;
     private static PendingIntent sPendingIntent;
 
-    public static void setAlarm(Context context, Alarm alarm) {
+    public static void setAlarm(Activity context, Alarm alarm) {
         sAlarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
         sReceiverIntent = new Intent(context, AlarmReceiver.class);
         Calendar calendar = Calendar.getInstance();
@@ -73,7 +65,8 @@ public class AlarmsFragment extends Fragment {
             sHour = "0" + String.valueOf(hour);
         }
 
-        Toast.makeText(context, context.getResources().getString(R.string.alarm_set_on)+ sHour + ":" + sMinute, Toast.LENGTH_LONG).show();
+        CustomSnackBar.makeErrorSnackBar(context, context.getResources().getString(R.string.alarm_set_on) + sHour + ":" + sMinute, false);
+        //Toast.makeText(context, context.getResources().getString(R.string.alarm_set_on)+ sHour + ":" + sMinute, Toast.LENGTH_LONG).show();
 
         sReceiverIntent.putExtra("extra", "alarm on");
         sReceiverIntent.putExtra("songId", alarm.getSongId());

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.flow.activities.SingleNoteActivity;
 import com.example.pawe.organizer.models.Note;
+import com.example.pawe.organizer.utils.KeyboardHider;
 
 
 import javax.inject.Inject;
@@ -88,6 +89,7 @@ public class SingleNoteFragment extends Fragment {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                KeyboardHider.hideKeyboard(getActivity());
                                 mNoteTitle.setText(input.getText());
                             }
                         });
@@ -95,6 +97,7 @@ public class SingleNoteFragment extends Fragment {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                KeyboardHider.hideKeyboard(getActivity());
                                 dialog.cancel();
                             }
                         });
@@ -107,6 +110,7 @@ public class SingleNoteFragment extends Fragment {
         mCancelNoteIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                KeyboardHider.hideKeyboard(getActivity());
                 getActivity().finish();
             }
         });
@@ -114,6 +118,7 @@ public class SingleNoteFragment extends Fragment {
         mSaveNoteIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                KeyboardHider.hideKeyboard(getActivity());
                 if (title.equals("") && text.equals("")) {
                     Note note = new Note(mNoteTitle.getText().toString(), mNoteText.getText().toString());
                     note.save();

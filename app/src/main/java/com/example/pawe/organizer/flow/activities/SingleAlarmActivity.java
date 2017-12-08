@@ -1,30 +1,19 @@
 package com.example.pawe.organizer.flow.activities;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.activeandroid.ActiveAndroid;
 import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.flow.fragments.AlarmsFragment;
-import com.example.pawe.organizer.flow.services.AlarmReceiver;
 import com.example.pawe.organizer.models.Alarm;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
-
-import java.sql.Time;
-import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

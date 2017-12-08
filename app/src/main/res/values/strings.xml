@@ -20,6 +20,7 @@
     <string name="address_error">Incorrect address!</string>
     <string name="address_no_gps">Turn on GPS provider!</string>
     <string name="address_cannot_find">Cannot find current address</string>
+    <string name="no_internet">No Internet connection</string>
 
     <string name="address_name">Current location</string>
     <string name="permission_granted">Permission granted</string>
@@ -45,4 +46,5 @@
     </string-array>
 
     <string name="msg_pick_ringtone">Please pick a ringtone</string>
+
 </resources>
