@@ -6,8 +6,8 @@ import com.example.pawe.organizer.flow.activities.MainActivity;
 import com.example.pawe.organizer.dagger.ApplicationComponent;
 import com.example.pawe.organizer.dagger.DaggerApplicationComponent;
 import com.example.pawe.organizer.dagger.module.ApplicationModule;
+import com.example.pawe.organizer.flow.activities.SingleAlarmActivity;
 import com.example.pawe.organizer.flow.activities.SingleNoteActivity;
-import com.example.pawe.organizer.flow.fragments.NotesFragment;
 
 
 public class MyApplication extends Application {
@@ -26,5 +26,9 @@ public class MyApplication extends Application {
 
     public static void inject(SingleNoteActivity singleNoteActivity) {
         mApplicationComponent.inject(singleNoteActivity);
+    }
+
+    public static void inject(SingleAlarmActivity singleAlarmActivity) {
+        mApplicationComponent.inject(singleAlarmActivity);
     }
 }

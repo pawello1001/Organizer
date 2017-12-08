@@ -6,7 +6,7 @@
 
     <Button
         android:id="@+id/siema"
-        android:text="SIEMANDERO"
+        android:text="+"
         android:padding="7dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

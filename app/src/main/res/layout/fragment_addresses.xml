@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <Button
         android:id="@+id/siemaMapy"
-        android:text="siema mapy"
+        android:text="+"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/lokal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        android:text="aktualny"/>
 
     <ListView
         android:id="@+id/addresses_lv"
@@ -15,7 +23,8 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         android:scrollbarStyle="outsideOverlay"
+        android:layout_below="@+id/lokal"
         android:paddingBottom="@dimen/notes_lv_height"
         android:dividerHeight="@dimen/notes_lv_divider_height"
         android:divider="@color/black"/>
-</LinearLayout>
+</RelativeLayout>

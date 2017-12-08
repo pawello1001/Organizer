@@ -1,7 +1,8 @@
 package com.example.pawe.organizer.flow.fragments;
 
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -13,21 +14,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.pawe.organizer.MapsActivity;
 import com.example.pawe.organizer.R;
+import com.example.pawe.organizer.flow.activities.MainActivity;
 import com.example.pawe.organizer.flow.activities.SingleAddressActivity;
 import com.example.pawe.organizer.flow.adapters.AddressListAdapter;
-import com.example.pawe.organizer.flow.adapters.NoteListAdapter;
 import com.example.pawe.organizer.models.Address;
-import com.example.pawe.organizer.models.Note;
-
 import java.util.List;
 
 import butterknife.ButterKnife;
 
 public class AddressesFragment extends Fragment {
 
+
     Button siemaMapy;
+    Button lokal;
 
     private List<Address> mAddresses;
     private ListView mAddressesLv;
@@ -46,6 +46,7 @@ public class AddressesFragment extends Fragment {
         address = "";
 
         siemaMapy = ButterKnife.findById(rootView, R.id.siemaMapy);
+        lokal = ButterKnife.findById(rootView, R.id.lokal);
         mAddressesLv = ButterKnife.findById(rootView, R.id.addresses_lv);
 
         mAddresses = Address.getAllAddresses();
@@ -99,6 +100,17 @@ public class AddressesFragment extends Fragment {
                 name = "";
                 address = "";
                 SingleAddressActivity.startActivity(getActivity(), name, address);
+            }
+        });
+
+        lokal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).setCurrentAddress();
+                mAddresses = Address.getAllAddresses();
+                mAdapter = new AddressListAdapter(getActivity().getApplicationContext(), mAddresses);
+                mAddressesLv.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
             }
         });
 

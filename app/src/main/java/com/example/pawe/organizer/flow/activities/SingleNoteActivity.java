@@ -13,8 +13,6 @@ import butterknife.ButterKnife;
 
 public class SingleNoteActivity extends BaseActivity {
 
-    private SingleNoteFragment mFragment;
-
     public static void startActivity(Context context, String title, String text) {
         Intent intent = new Intent(context, SingleNoteActivity.class);
         intent.putExtra("title", title);

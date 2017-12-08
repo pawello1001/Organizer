@@ -10,10 +10,39 @@
     <string name="dialog_negative_button">Cancel</string>
     <string name="dialog_delete_note">Are you sure you want to delete this note?</string>
     <string name="dialog_delete_note_title">Delete note</string>
+    <string name="dialog_delete_address">Are you sure you want to delete this address?</string>
+    <string name="dialog_delete_address_title">Delete address</string>
+    <string name="dialog_delete_alarm">Are you sure you want to delete this alarm?</string>
+    <string name="dialog_delete_alarm_title">Delete alarm</string>
 
     <string name="address_alert_dialog_name">Enter new name</string>
 
     <string name="address_error">Incorrect address!</string>
-    <string name="dialog_delete_address">Are you sure you want to delete this address?</string>
-    <string name="dialog_delete_address_title">Delete address</string>
+    <string name="address_no_gps">Turn on GPS provider!</string>
+    <string name="address_cannot_find">Cannot find current address</string>
+
+    <string name="address_name">Current location</string>
+    <string name="permission_granted">Permission granted</string>
+    <string name="permission_denied">Permission denied</string>
+
+    <string name="alarm_list_hour">Hour</string>
+
+    <string name="alarm_set_on">Alarm has been set on: </string>
+    <string name="alarm_turn_off">Turn off an Alarm!</string>
+    <string name="alarm_click_me">Click me!</string>
+
+    <string-array name="ringtones">
+        <item>Alarm</item>
+        <item>Apple Ring</item>
+        <item>Best Wake Up Sound</item>
+        <item>Car Lock</item>
+        <item>Extreme Alarm Clock</item>
+        <item>Morning Alarm</item>
+        <item>Real Loud Alarm</item>
+        <item>Russian Electro</item>
+        <item>Siren</item>
+        <item>Voo Voo SMS</item>
+    </string-array>
+
+    <string name="msg_pick_ringtone">Please pick a ringtone</string>
 </resources>
