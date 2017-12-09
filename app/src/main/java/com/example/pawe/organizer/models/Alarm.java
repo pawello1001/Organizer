@@ -22,6 +22,15 @@ public class Alarm extends Model {
     @Column(name = "isEnabled")
     private boolean isEnabled;
 
+    @Column(name = "timesCalled")
+    private int timesCalled;
+
+    @Column(name = "lastUsed")
+    private String lastUsed;
+
+    @Column(name = "timePlayedCounter")
+    private float timePlayedCounter;
+
     public Alarm() { super();}
 
     public Alarm(int hour, int minute, int songId, boolean isEnabled) {
@@ -56,9 +65,15 @@ public class Alarm extends Model {
     public int getMinute() { return minute; }
     public int getSongId() { return songId; }
     public boolean getIsEnabled() { return isEnabled; }
+    public int getTimesCalled() { return timesCalled; }
+    public String getLastUsed() { return lastUsed; }
+    public float getTimePlayedCounter() { return timePlayedCounter; }
 
     public void setHour(int hour) { this.hour = hour; }
     public void setMinute(int minute) {this.minute = minute; }
     public void setSongId(int songId) {this.songId = songId; }
     public void setEnabled(boolean isEnabled) { this.isEnabled = isEnabled; }
+    public void setTimesCalled(int timesCalled) { this.timesCalled = timesCalled; }
+    public void setLastUsed(String lastUsed) { this.lastUsed = lastUsed; }
+    public void setTimePlayedCounter(float timePlayedCounter) { this.timePlayedCounter = timePlayedCounter; }
 }

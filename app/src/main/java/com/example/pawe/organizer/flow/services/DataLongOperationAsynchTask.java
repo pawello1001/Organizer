@@ -19,6 +19,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -72,7 +75,11 @@ public class DataLongOperationAsynchTask extends AsyncTask<String, Void, String>
             Log.d("address", address);
             Log.d("latitude", "" + lat);
             Log.d("longitude", "" + lng);
-            Address addr = new Address(name, address, lat, lng);
+            Date date = Calendar.getInstance().getTime();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String curDate = format.format(date);
+            Log.d("TODAY IS:", curDate);
+            Address addr = new Address(name, address, lat, lng, 0, curDate);
             addr.save();
             mContext.finish();
         } catch (JSONException e) {

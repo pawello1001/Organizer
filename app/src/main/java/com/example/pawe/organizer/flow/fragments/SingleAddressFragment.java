@@ -77,7 +77,6 @@ public class SingleAddressFragment extends Fragment {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                KeyboardHider.hideKeyboard(getActivity());
                                 dialog.cancel();
                             }
                         });

@@ -23,6 +23,9 @@ import com.example.pawe.organizer.flow.adapters.SectionsPagerAdapter;
 import com.example.pawe.organizer.utils.CustomSnackBar;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -38,7 +41,7 @@ public class MainActivity extends BaseActivity implements LocationListener{
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     private Location currentLocation;
-    LocationManager locationManager;
+    private LocationManager locationManager;
 
     @BindView(R.id.activity_main_toolbar)
     Toolbar mToolbar;
@@ -132,10 +135,17 @@ public class MainActivity extends BaseActivity implements LocationListener{
             String address = street + ", " + city + ", " + country;
             Log.d("ADDRESS", address);
 
+            Date date = Calendar.getInstance().getTime();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String curDate = format.format(date);
+            Log.d("TODAY IS:", curDate);
+
             com.example.pawe.organizer.models.Address add = new com.example.pawe.organizer.models.Address();
             add.setName(getString(R.string.address_name));
             add.setLatitude(currentLocation.getLatitude());
             add.setLongitude(currentLocation.getLongitude());
+            add.setTimesViewed(0);
+            add.setDateCreated(curDate);
             add.setAddress(address);
 
             add.save();
@@ -143,5 +153,10 @@ public class MainActivity extends BaseActivity implements LocationListener{
             CustomSnackBar.makeErrorSnackBar(this, getResources().getString(R.string.address_cannot_find), true);
             //Toast.makeText(this, R.string.address_cannot_find, Toast.LENGTH_LONG).show();
         }
+    }
+
+    public Location getLocation() {
+        getCurrentLocation();
+        return this.currentLocation;
     }
 }

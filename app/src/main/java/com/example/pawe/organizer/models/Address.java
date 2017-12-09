@@ -22,14 +22,22 @@ public class Address extends Model {
     @Column(name = "longitude")
     private double longitude;
 
+    @Column(name = "timesViewed")
+    private int timesViewed;
+
+    @Column(name = "dateCreated")
+    private String dateCreated;
+
     public Address() { super(); }
 
-    public Address(String name, String address, double latitude, double longitude) {
+    public Address(String name, String address, double latitude, double longitude, int timesViewed, String dateCreated) {
         super();
         this.name = name;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.timesViewed = timesViewed;
+        this.dateCreated = dateCreated;
     }
 
     public static List<Address> getAllAddresses() {
@@ -44,9 +52,13 @@ public class Address extends Model {
     public String getAddress() { return address; }
     public double getLatitude() { return latitude; }
     public double getLongitude() { return longitude; }
+    public int getTimesViewed() { return timesViewed; }
+    public String getDateCreated() { return dateCreated; }
 
     public void setName(String name) { this.name = name; }
     public void setAddress(String address) { this.address = address; }
     public void setLatitude(double latitude) { this.latitude = latitude; }
     public void setLongitude(double longitude) { this.longitude = longitude; }
+    public void setTimesViewed(int timesViewed) { this.timesViewed = timesViewed; }
+    public void setDateCreated(String dateCreated) { this.dateCreated = dateCreated; }
 }

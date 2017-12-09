@@ -17,14 +17,26 @@ public class Note extends Model {
     @Column(name = "text")
     private String text;
 
+    @Column(name = "charCounter")
+    private int charCounter;
+
+    @Column(name = "dateCreated")
+    private String dateCreated;
+
+    @Column(name = "lastUpdated")
+    private String lastUpdated;
+
     public Note() {
         super();
     }
 
-    public Note(String title, String text) {
+    public Note(String title, String text, int charCounter, String dateCreated, String lastUpdated) {
         super();
         this.title = title;
         this.text = text;
+        this.charCounter = charCounter;
+        this.dateCreated = dateCreated;
+        this.lastUpdated = lastUpdated;
     }
 
     public static List<Note> getAllNotes() {
@@ -41,6 +53,9 @@ public class Note extends Model {
     public String getText() {
         return text;
     }
+    public int getCharCounter() { return charCounter; }
+    public String getDateCreated() { return dateCreated; }
+    public String getLastUpdated() { return lastUpdated; }
 
     public void setTitle(String title) {
         this.title = title;
@@ -48,4 +63,7 @@ public class Note extends Model {
     public void setText(String text) {
         this.text = text;
     }
+    public void setCharCounter(int charCounter) { this.charCounter = charCounter; }
+    public void setDateCreated(String dateCreated) { this.dateCreated = dateCreated; }
+    public void  setLastUpdated(String lastUpdated) { this.lastUpdated = lastUpdated; }
 }

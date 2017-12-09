@@ -4,9 +4,14 @@ package com.example.pawe.organizer.flow.fragments;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +27,9 @@ import com.example.pawe.organizer.flow.services.AlarmReceiver;
 import com.example.pawe.organizer.models.Alarm;
 import com.example.pawe.organizer.utils.CustomSnackBar;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -34,19 +41,37 @@ public class AlarmsFragment extends Fragment {
     private Button siema;
     private ListView mAlarmsLv;
 
-    int hour;
-    int minute;
-    int songId;
-    boolean isEnabled;
+    private int hour;
+    private int minute;
+    private int songId;
+    private boolean isEnabled;
 
     private List<Alarm> mAlarms;
     private ArrayAdapter<Alarm> mAdapter;
 
+    private static Alarm sAlarm;
     private static AlarmManager sAlarmManager;
     private static Intent sReceiverIntent;
     private static PendingIntent sPendingIntent;
 
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Date date = Calendar.getInstance().getTime();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            String curDate = format.format(date);
+
+            float timePlaying = intent.getFloatExtra("timePlaying", 0);
+
+            sAlarm.setTimesCalled(sAlarm.getTimesCalled() + 1);
+            sAlarm.setLastUsed(curDate);
+            sAlarm.setTimePlayedCounter(sAlarm.getTimePlayedCounter() + timePlaying);
+            sAlarm.save();
+        }
+    };
+
     public static void setAlarm(Activity context, Alarm alarm) {
+        sAlarm = alarm;
         sAlarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
         sReceiverIntent = new Intent(context, AlarmReceiver.class);
         Calendar calendar = Calendar.getInstance();
@@ -76,13 +101,13 @@ public class AlarmsFragment extends Fragment {
     }
 
     public static void cancelAlarm(Activity context) {
-        Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
-        Alarm alarm = Alarm.getCurrentAlarm(hour, minute);
-        if (alarm != null) {
-            alarm.setEnabled(false);
-            alarm.save();
+//        Calendar calendar = Calendar.getInstance();
+//        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+//        int minute = calendar.get(Calendar.MINUTE);
+//        Alarm alarm = Alarm.getCurrentAlarm(hour, minute);
+        if (sAlarm != null) {
+            sAlarm.setEnabled(false);
+            sAlarm.save();
         }
         if (sPendingIntent == null || sReceiverIntent == null) {
             context.finish();
@@ -143,5 +168,13 @@ public class AlarmsFragment extends Fragment {
         mAdapter = new AlarmListAdapter(getActivity(), mAlarms);
         mAlarmsLv.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
+
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("NOW"));
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(broadcastReceiver);
     }
 }

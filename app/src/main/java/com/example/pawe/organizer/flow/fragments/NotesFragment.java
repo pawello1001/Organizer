@@ -60,7 +60,7 @@ public class NotesFragment extends Fragment {
         mNotesLv = ButterKnife.findById(rootView, R.id.notes_lv);
 
         mNotes = Note.getAllNotes();
-        mAdapter = new NoteListAdapter(getActivity().getApplicationContext(), mNotes);
+        mAdapter = new NoteListAdapter(getActivity(), mNotes);
         mAdapter.notifyDataSetChanged();
         mNotesLv.setAdapter(mAdapter);
 
@@ -78,7 +78,7 @@ public class NotesFragment extends Fragment {
                                 mNotes.get(position).delete();
                                 mAdapter.notifyDataSetChanged();
                                 mNotes = Note.getAllNotes();
-                                mAdapter = new NoteListAdapter(getActivity().getApplicationContext(), mNotes);
+                                mAdapter = new NoteListAdapter(getActivity(), mNotes);
                                 mNotesLv.setAdapter(mAdapter);
                             }
                         });
@@ -121,7 +121,7 @@ public class NotesFragment extends Fragment {
     public void onResume() {
         super.onResume();
         mNotes = Note.getAllNotes();
-        mAdapter = new NoteListAdapter(getActivity().getApplicationContext(), mNotes);
+        mAdapter = new NoteListAdapter(getActivity(), mNotes);
         mNotesLv.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }

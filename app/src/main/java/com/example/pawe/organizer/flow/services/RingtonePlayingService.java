@@ -9,10 +9,15 @@ import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.widget.RemoteViews;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 
 import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.flow.activities.SingleAlarmActivity;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class RingtonePlayingService extends Service {
 
@@ -20,7 +25,9 @@ public class RingtonePlayingService extends Service {
     private int startId;
     private boolean isRunning;
 
-    private RemoteViews mNotificationLayout;
+    private long mTimeStart;
+    private long mTimeStop;
+    private float mTimePlaying;
 
     @Nullable
     @Override
@@ -52,6 +59,7 @@ public class RingtonePlayingService extends Service {
                 case 0:
                     mediaPlayer = MediaPlayer.create(this, R.raw.alarm);
                     mediaPlayer.start();
+                    mTimeStart = System.currentTimeMillis();
                     mediaPlayer.setLooping(true);
                     isRunning = true;
                     this.startId = 0;
@@ -59,6 +67,7 @@ public class RingtonePlayingService extends Service {
                 case 1:
                     mediaPlayer = MediaPlayer.create(this, R.raw.apple_ring);
                     mediaPlayer.start();
+                    mTimeStart = System.currentTimeMillis();
                     mediaPlayer.setLooping(true);
                     isRunning = true;
                     this.startId = 0;
@@ -66,6 +75,7 @@ public class RingtonePlayingService extends Service {
                 case 2:
                     mediaPlayer = MediaPlayer.create(this, R.raw.best_wake_up_sound);
                     mediaPlayer.start();
+                    mTimeStart = System.currentTimeMillis();
                     mediaPlayer.setLooping(true);
                     isRunning = true;
                     this.startId = 0;
@@ -73,6 +83,7 @@ public class RingtonePlayingService extends Service {
                 case 3:
                     mediaPlayer = MediaPlayer.create(this, R.raw.car_lock);
                     mediaPlayer.start();
+                    mTimeStart = System.currentTimeMillis();
                     mediaPlayer.setLooping(true);
                     isRunning = true;
                     this.startId = 0;
@@ -80,6 +91,7 @@ public class RingtonePlayingService extends Service {
                 case 4:
                     mediaPlayer = MediaPlayer.create(this, R.raw.extreme_alarm_clock);
                     mediaPlayer.start();
+                    mTimeStart = System.currentTimeMillis();
                     mediaPlayer.setLooping(true);
                     isRunning = true;
                     this.startId = 0;
@@ -87,6 +99,7 @@ public class RingtonePlayingService extends Service {
                 case 5:
                     mediaPlayer = MediaPlayer.create(this, R.raw.morning_alarm);
                     mediaPlayer.start();
+                    mTimeStart = System.currentTimeMillis();
                     mediaPlayer.setLooping(true);
                     isRunning = true;
                     this.startId = 0;
@@ -94,6 +107,7 @@ public class RingtonePlayingService extends Service {
                 case 6:
                     mediaPlayer = MediaPlayer.create(this, R.raw.real_loud_alarm);
                     mediaPlayer.start();
+                    mTimeStart = System.currentTimeMillis();
                     mediaPlayer.setLooping(true);
                     isRunning = true;
                     this.startId = 0;
@@ -101,6 +115,7 @@ public class RingtonePlayingService extends Service {
                 case 7:
                     mediaPlayer = MediaPlayer.create(this, R.raw.russian_electro);
                     mediaPlayer.start();
+                    mTimeStart = System.currentTimeMillis();
                     mediaPlayer.setLooping(true);
                     isRunning = true;
                     this.startId = 0;
@@ -108,6 +123,7 @@ public class RingtonePlayingService extends Service {
                 case 8:
                     mediaPlayer = MediaPlayer.create(this, R.raw.siren);
                     mediaPlayer.start();
+                    mTimeStart = System.currentTimeMillis();
                     mediaPlayer.setLooping(true);
                     isRunning = true;
                     this.startId = 0;
@@ -115,6 +131,7 @@ public class RingtonePlayingService extends Service {
                 case 9:
                     mediaPlayer = MediaPlayer.create(this, R.raw.voo_voo_sms);
                     mediaPlayer.start();
+                    mTimeStart = System.currentTimeMillis();
                     mediaPlayer.setLooping(true);
                     isRunning = true;
                     this.startId = 0;
@@ -122,6 +139,7 @@ public class RingtonePlayingService extends Service {
                 default:
                     mediaPlayer = MediaPlayer.create(this, R.raw.alarm);
                     mediaPlayer.start();
+                    mTimeStart = System.currentTimeMillis();
                     mediaPlayer.setLooping(true);
                     isRunning = true;
                     this.startId = 0;
@@ -145,6 +163,14 @@ public class RingtonePlayingService extends Service {
         } else if (isRunning && startId == 0) {
             mediaPlayer.stop();
             mediaPlayer.reset();
+            mTimeStop = System.currentTimeMillis() - mTimeStart;
+            mTimePlaying = (float) (mTimeStop / 1000.000);
+            Log.d("TIME PLAYED", String.valueOf(mTimeStop));
+            Log.d("TIME PLAYED", String.valueOf(mTimePlaying));
+
+            intent.putExtra("timePlaying", mTimePlaying);
+            intent.setAction("NOW");
+            LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
             isRunning = false;
             this.startId = 0;
         } else { }

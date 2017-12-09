@@ -56,11 +56,20 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity android:name=".MapsActivity" />
-        <activity android:name=".flow.activities.SingleAlarmActivity"></activity>
+        <activity android:name=".flow.activities.SingleAlarmActivity" />
+        <activity
+            android:name=".flow.activities.AddressStatsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
 
         <receiver android:name=".flow.services.AlarmReceiver" />
-        <service android:name=".flow.services.RingtonePlayingService"
-            android:enabled="true"/>
+
+        <service
+            android:name=".flow.services.RingtonePlayingService"
+            android:enabled="true" />
+
+        <activity android:name=".flow.activities.NoteStatsActivity" />
+        <activity android:name=".flow.activities.AlarmStatsActivity"></activity>
     </application>
 
 </manifest>

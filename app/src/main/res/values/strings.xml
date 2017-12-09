@@ -47,4 +47,18 @@
 
     <string name="msg_pick_ringtone">Please pick a ringtone</string>
 
+    <string name="address_stats_times_viewed">Viewed on map: </string>
+    <string name="address_stats_distance">Distance from current location: </string>
+    <string name="address_stats_date_created">Date created: </string>
+    <string name="address_stats_kilometers"> km</string>
+
+    <string name="note_stats_char_counter">Character used: </string>
+    <string name="note_stats_date_created">Date created: </string>
+    <string name="note_stats_last_updated">Last updated: </string>
+
+    <string name="alarm_stats_times_called">Called counter: </string>
+    <string name="alarm_stats_last_used">Last used: </string>
+    <string name="alarm_stats_avarage_time_play">Average play time: </string>
+    <string name="alarm_stats_sec"> s</string>
+
 </resources>

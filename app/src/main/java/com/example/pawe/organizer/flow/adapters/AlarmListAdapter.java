@@ -6,19 +6,23 @@ import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.pawe.organizer.R;
+import com.example.pawe.organizer.flow.activities.AlarmStatsActivity;
 import com.example.pawe.organizer.flow.activities.SingleAlarmActivity;
 import com.example.pawe.organizer.flow.fragments.AlarmsFragment;
+import com.example.pawe.organizer.flow.services.RingtonePlayingService;
 import com.example.pawe.organizer.models.Alarm;
 import com.example.pawe.organizer.utils.KeyboardHider;
 
@@ -35,6 +39,7 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
 
     private TextView mAlarmHourTv;
     private Switch mAlarmEnabled;
+    private ImageView mAlarmStatsIv;
 
     @Nullable
     @BindView(R.id.alarms_lv)
@@ -50,6 +55,7 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
         view = LayoutInflater.from(mContext).inflate(R.layout.alarm_list_item, parent, false);
         mAlarmHourTv = ButterKnife.findById(view, R.id.alarm_list_hour_tv);
         mAlarmEnabled = ButterKnife.findById(view, R.id.alarm_list_enabled_sw);
+        mAlarmStatsIv = ButterKnife.findById(view, R.id.alarm_stats_iv);
 
         if (mAlarms != null && mAlarms.size() > 0) {
             if (mAlarms.get(position).getMinute() < 10 && mAlarms.get(position).getHour() < 10) {
@@ -78,7 +84,6 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
                 alertDialog.setPositiveButton(R.string.dialog_positive_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        KeyboardHider.hideKeyboard(mContext);
                         mAlarms = Alarm.getAllAlarms();
                         mAlarms.get(position).delete();
                         notifyDataSetChanged();
@@ -115,6 +120,15 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
                     //cancel alarm!!!!
                     AlarmsFragment.cancelAlarm(mContext);
                 }
+            }
+        });
+
+        mAlarmStatsIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlarmStatsActivity.startActivity(mContext, mAlarms.get(position).getTimesCalled(),
+                        mAlarms.get(position).getLastUsed(),
+                        (float)(int)((mAlarms.get(position).getTimePlayedCounter() / mAlarms.get(position).getTimesCalled())*100f) / 100f);
             }
         });
 

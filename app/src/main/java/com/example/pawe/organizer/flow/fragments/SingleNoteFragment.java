@@ -21,6 +21,10 @@ import com.example.pawe.organizer.models.Note;
 import com.example.pawe.organizer.utils.KeyboardHider;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
@@ -120,12 +124,21 @@ public class SingleNoteFragment extends Fragment {
             public void onClick(View v) {
                 KeyboardHider.hideKeyboard(getActivity());
                 if (title.equals("") && text.equals("")) {
-                    Note note = new Note(mNoteTitle.getText().toString(), mNoteText.getText().toString());
+                    Date date = Calendar.getInstance().getTime();
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                    String curDate = format.format(date);
+                    Note note = new Note(mNoteTitle.getText().toString(), mNoteText.getText().toString(), mNoteText.getText().length(), curDate, curDate);
                     note.save();
                 } else {
+                    Date date = Calendar.getInstance().getTime();
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                    String curDate = format.format(date);
+
                     Note note = Note.getNote(title, text);
                     note.setTitle(mNoteTitle.getText().toString());
                     note.setText(mNoteText.getText().toString());
+                    note.setCharCounter(mNoteText.getText().length());
+                    note.setLastUpdated(curDate);
                     note.save();
                 }
                 getActivity().finish();

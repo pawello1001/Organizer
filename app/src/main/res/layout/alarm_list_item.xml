@@ -1,25 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/notes_lv_height">
 
-    <TextView
-        android:id="@+id/alarm_list_hour_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/alarm_list_hour"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/notes_lv_height"
-        android:textColor="@color/black"
-        android:textSize="@dimen/note_title_textsize"/>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2">
+        <ImageView
+            android:id="@+id/alarm_stats_iv"
+            android:layout_width="@dimen/icon_address_size"
+            android:layout_height="@dimen/icon_address_size"
+            android:layout_margin="@dimen/icon_address_margin"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_stats"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.6">
+        <TextView
+            android:id="@+id/alarm_list_hour_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/alarm_list_hour"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/note_title_textsize"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2">
+        <Switch
+            android:id="@+id/alarm_list_enabled_sw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
 
-    <Switch
-        android:id="@+id/alarm_list_enabled_sw"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/alarm_switch_margin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"/>
 
-</RelativeLayout>
+
+
+</LinearLayout>

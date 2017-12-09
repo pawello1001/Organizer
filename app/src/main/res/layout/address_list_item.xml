@@ -2,19 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="72dp">
+    android:layout_height="@dimen/notes_lv_height">
 
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.8">
+        android:layout_weight="0.2">
+        <ImageView
+            android:id="@+id/address_stats_iv"
+            android:layout_width="@dimen/icon_address_size"
+            android:layout_height="@dimen/icon_address_size"
+            android:layout_margin="@dimen/icon_address_margin"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_stats"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.6">
         <TextView
             android:id="@+id/address_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/edittext_padding"
             android:layout_alignParentTop="true"
             android:textColor="@color/black"
             android:textSize="@dimen/note_title_textsize"
@@ -26,7 +39,7 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/address_name_tv"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/edittext_padding"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/address_name_textsize"
             android:hint="Address"/>
