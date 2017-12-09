@@ -4,31 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.example.pawe.organizer.flow.activities.NoteStatsActivity">
     <RelativeLayout
         android:id="@+id/note_stats_rl1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/edittext_padding">
         <TextView
             android:id="@+id/note_stats_CharCounter_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/note_stats_char_counter"/>
+            android:text="@string/note_stats_char_counter"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/note_stats_char_counter_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/note_stats_CharCounter_label"
-            android:textStyle="bold"/>
+            android:layout_below="@+id/note_stats_CharCounter_label"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/note_stats_rl2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/note_stats_rl1"
         android:layout_margin="@dimen/edittext_padding">
@@ -36,31 +41,42 @@
             android:id="@+id/note_stats_date_created_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/note_stats_date_created"/>
+            android:text="@string/note_stats_date_created"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/note_stats_date_created_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/note_stats_date_created_label"
-            android:textStyle="bold"/>
+            android:layout_below="@+id/note_stats_date_created_label"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:layout_below="@+id/note_stats_rl2"
         android:layout_margin="@dimen/edittext_padding">
         <TextView
             android:id="@+id/note_stats_last_updated_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/note_stats_last_updated"/>
+            android:text="@string/note_stats_last_updated"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/note_stats_last_updated_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/note_stats_last_updated_label"
-            android:textStyle="bold"/>
+            android:layout_below="@+id/note_stats_last_updated_label"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
     </RelativeLayout>
 </RelativeLayout>

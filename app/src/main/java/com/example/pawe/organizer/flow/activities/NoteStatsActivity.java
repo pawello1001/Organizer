@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.widget.TextView;
 
 import com.activeandroid.ActiveAndroid;
@@ -41,6 +42,13 @@ public class NoteStatsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_note_stats);
         ButterKnife.bind(this);
         ActiveAndroid.initialize(this);
+
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+
+        getWindow().setLayout((int)(width * 0.75), (int)(height * 0.3));
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {

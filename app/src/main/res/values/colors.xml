@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="colorEditTextLine">#BCBFC4</color>
+    <color name="colorPrimary">#C0CA33</color>
+    <color name="colorPrimaryDark">#9E9D24</color>
+    <color name="colorAccent">#9E9D24</color>
+    <color name="colorEditTextLine">#9E9D24</color>
     <color name="black">#000000</color>
     <color name="yellow_alert">#FDD835</color>
     <color name="green_alert">#64DD17</color>
+    <color name="ekri">#f9f2e0</color>
 </resources>

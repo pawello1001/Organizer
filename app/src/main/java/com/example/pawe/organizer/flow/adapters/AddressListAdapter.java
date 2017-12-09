@@ -50,6 +50,7 @@ public class AddressListAdapter extends ArrayAdapter<Address> {
         mAddressLocationIv = ButterKnife.findById(view, R.id.address_location_iv);
         mAddressStatsIv = ButterKnife.findById(view, R.id.address_stats_iv);
 
+        mAddressNameTv.setHintTextColor(mContext.getResources().getColor(R.color.colorAccent));
         mAddressNameTv.setText(mAddresses.get(position).getName());
         mAddressTv.setText(mAddresses.get(position).getAddress());
 

@@ -4,32 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.example.pawe.organizer.flow.activities.AddressStatsActivity">
 
     <RelativeLayout
         android:id="@+id/address_stats_rl1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/edittext_padding">
         <TextView
             android:id="@+id/address_stats_timesViewed_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/address_stats_times_viewed"/>
+            android:text="@string/address_stats_times_viewed"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/address_stats_timesViewed_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/address_stats_timesViewed_label"
-            android:textStyle="bold"/>
+            android:layout_below="@+id/address_stats_timesViewed_label"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/address_stats_rl2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/address_stats_rl1"
         android:layout_margin="@dimen/edittext_padding">
@@ -37,36 +42,50 @@
             android:id="@+id/address_stats_distance_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/address_stats_distance"/>
+            android:text="@string/address_stats_distance"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/address_stats_distance_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/address_stats_distance_label"
-            android:textStyle="bold"/>
+            android:layout_below="@+id/address_stats_distance_label"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/address_stats_kilometers"
-            android:layout_toRightOf="@+id/address_stats_distance_tv"/>
+            android:layout_below="@+id/address_stats_distance_label"
+            android:layout_toRightOf="@+id/address_stats_distance_tv"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:layout_below="@+id/address_stats_rl2"
         android:layout_margin="@dimen/edittext_padding">
         <TextView
             android:id="@+id/address_stats_dateCreated_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/address_stats_date_created"/>
+            android:text="@string/address_stats_date_created"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/address_stats_dateCreated_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/address_stats_dateCreated_label"
-            android:textStyle="bold"/>
+            android:layout_below="@+id/address_stats_dateCreated_label"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
     </RelativeLayout>
 </RelativeLayout>

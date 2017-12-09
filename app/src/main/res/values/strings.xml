@@ -29,6 +29,7 @@
     <string name="alarm_list_hour">Hour</string>
 
     <string name="alarm_set_on">Alarm has been set on: </string>
+    <string name="alarm_cancelled">Alarm has been cancelled</string>
     <string name="alarm_turn_off">Turn off an Alarm!</string>
     <string name="alarm_click_me">Click me!</string>
 

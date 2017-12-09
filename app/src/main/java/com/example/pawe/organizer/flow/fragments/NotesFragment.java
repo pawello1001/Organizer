@@ -67,7 +67,7 @@ public class NotesFragment extends Fragment {
         mNotesLv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
                 alertDialog.setMessage(R.string.dialog_delete_note);
                 alertDialog.setTitle(R.string.dialog_delete_note_title);
                 alertDialog.setPositiveButton(getString(R.string.dialog_positive_button),

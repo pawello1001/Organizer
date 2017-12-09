@@ -2,11 +2,16 @@ package com.example.pawe.organizer.flow.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.TimePicker;
 
 import com.activeandroid.ActiveAndroid;
@@ -14,6 +19,8 @@ import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.flow.fragments.AlarmsFragment;
 import com.example.pawe.organizer.models.Alarm;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
+
+import java.lang.reflect.Field;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -96,6 +103,8 @@ public class SingleAlarmActivity extends AppCompatActivity {
         }
 
         mTimePicker.setIs24HourView(true);
+        setTimePickerColor(mTimePicker);
+        mTimePicker.setDrawingCacheBackgroundColor(getResources().getColor(R.color.colorAccent));
         songs = getResources().getStringArray(R.array.ringtones);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.ringtones, R.layout.support_simple_spinner_dropdown_item);
@@ -108,5 +117,34 @@ public class SingleAlarmActivity extends AppCompatActivity {
             }
         });
         mSongPicker.setText(songs[songId]);
+    }
+
+    private void setTimePickerColor(TimePicker timePicker) {
+        Resources system = Resources.getSystem();
+        int hour = system.getIdentifier("hour", "id", "android");
+        int minute = system.getIdentifier("minute", "id", "android");
+
+        NumberPicker hourPicker = (NumberPicker) timePicker.findViewById(hour);
+        NumberPicker minutePicker = (NumberPicker) timePicker.findViewById(minute);
+
+        setNumberPickerColor(hourPicker);
+        setNumberPickerColor(minutePicker);
+    }
+    private void setNumberPickerColor(NumberPicker numberPicker) {
+        final int count = numberPicker.getChildCount();
+        final int color = getResources().getColor(R.color.colorAccent);
+
+        for (int i = 0; i < count; i++) {
+            View child = numberPicker.getChildAt(i);
+            try {
+                Field wheelPaintField = numberPicker.getClass().getDeclaredField("mSelectorWheelPaint");
+                wheelPaintField.setAccessible(true);
+                ((Paint)wheelPaintField.get(numberPicker)).setColor(color);
+                ((EditText)child).setTextColor(color);
+                numberPicker.invalidate();
+            } catch (Exception ex) {
+                Log.w("setNumberPickerColor", ex);
+            }
+        }
     }
 }

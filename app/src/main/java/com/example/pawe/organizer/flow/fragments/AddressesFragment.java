@@ -58,7 +58,7 @@ public class AddressesFragment extends Fragment {
         mAddressesLv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
                 alertDialog.setMessage(R.string.dialog_delete_address);
                 alertDialog.setTitle(R.string.dialog_delete_address_title);
                 alertDialog.setPositiveButton(getString(R.string.dialog_positive_button),

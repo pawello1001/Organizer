@@ -40,6 +40,7 @@ public class NoteListAdapter extends ArrayAdapter<Note> {
 
         mNoteTitleTv = ButterKnife.findById(view, R.id.note_list_title_tv);
         mNoteStatsIv = ButterKnife.findById(view, R.id.note_stats_iv);
+        mNoteTitleTv.setHintTextColor(mContext.getResources().getColor(R.color.colorAccent));
         mNoteTitleTv.setText(mNotes.get(position).getTitle());
 
         mNoteStatsIv.setOnClickListener(new View.OnClickListener() {

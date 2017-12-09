@@ -4,32 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.example.pawe.organizer.flow.activities.AlarmStatsActivity">
 
     <RelativeLayout
         android:id="@+id/alarm_stats_rl1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/edittext_padding">
         <TextView
             android:id="@+id/alarm_stats_timesCalled_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/alarm_stats_times_called"/>
+            android:text="@string/alarm_stats_times_called"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/alarm_stats_timesCalled_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/alarm_stats_timesCalled_label"
-            android:textStyle="bold"/>
+            android:layout_below="@+id/alarm_stats_timesCalled_label"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/alarm_stats_rl2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/alarm_stats_rl1"
         android:layout_margin="@dimen/edittext_padding">
@@ -37,36 +42,50 @@
             android:id="@+id/alarm_stats_last_used_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/alarm_stats_last_used"/>
+            android:text="@string/alarm_stats_last_used"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/alarm_stats_last_used_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/alarm_stats_last_used_label"
-            android:textStyle="bold"/>
+            android:layout_below="@+id/alarm_stats_last_used_label"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:layout_below="@+id/alarm_stats_rl2"
         android:layout_margin="@dimen/edittext_padding">
         <TextView
             android:id="@+id/alarm_stats_average_time_play_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/alarm_stats_avarage_time_play"/>
+            android:text="@string/alarm_stats_avarage_time_play"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/alarm_stats_average_time_play_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/alarm_stats_average_time_play_label"
-            android:textStyle="bold"/>
+            android:layout_below="@+id/alarm_stats_average_time_play_label"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/alarm_stats_sec"
-            android:layout_toRightOf="@+id/alarm_stats_average_time_play_tv"/>
+            android:layout_below="@id/alarm_stats_average_time_play_label"
+            android:layout_toRightOf="@+id/alarm_stats_average_time_play_tv"
+            android:textSize="@dimen/note_title_textsize"
+            android:textColor="@color/black"/>
     </RelativeLayout>
 </RelativeLayout>

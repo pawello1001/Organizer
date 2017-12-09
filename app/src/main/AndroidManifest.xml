@@ -26,7 +26,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/NoActionBar">
         <meta-data
             android:name="DB_NAME"
             android:value="@string/db_name" />
@@ -40,7 +40,8 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCK5Xe-5NjyOhxpTO3gmuRsY4l9lA5p8QQ" />
 
-        <activity android:name=".flow.activities.MainActivity">
+        <activity android:name=".flow.activities.MainActivity"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -60,7 +61,7 @@
         <activity
             android:name=".flow.activities.AddressStatsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/AppTheme.PopUpWindow" />
 
         <receiver android:name=".flow.services.AlarmReceiver" />
 
@@ -68,8 +69,10 @@
             android:name=".flow.services.RingtonePlayingService"
             android:enabled="true" />
 
-        <activity android:name=".flow.activities.NoteStatsActivity" />
-        <activity android:name=".flow.activities.AlarmStatsActivity"></activity>
+        <activity android:name=".flow.activities.NoteStatsActivity"
+            android:theme="@style/AppTheme.PopUpWindow"/>
+        <activity android:name=".flow.activities.AlarmStatsActivity"
+            android:theme="@style/AppTheme.PopUpWindow"/>
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.pawe.organizer.flow.activities.SingleAlarmActivity"
     android:padding="@dimen/activity_padding"
-    android:background="@drawable/gradient">
+    >
 
     <ImageView
         android:id="@+id/alarm_add_cancel_iv"
@@ -24,14 +24,22 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:timePickerMode="spinner"></TimePicker>
+        android:timePickerMode="spinner"
+        android:numbersTextColor="@color/colorAccent"
+        android:numbersInnerTextColor="@color/colorAccent"
+        android:numbersSelectorColor="@color/colorAccent"></TimePicker>
 
     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
         android:id="@+id/songPicker_mbs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/timePicker"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:shadowColor="@color/colorAccent"
+        android:textColor="@color/colorAccent"
+        android:textColorHighlight="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:textColorLink="@color/colorAccent"/>
 
 
 </RelativeLayout>

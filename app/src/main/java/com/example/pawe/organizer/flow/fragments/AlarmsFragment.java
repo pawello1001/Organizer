@@ -53,6 +53,7 @@ public class AlarmsFragment extends Fragment {
     private static AlarmManager sAlarmManager;
     private static Intent sReceiverIntent;
     private static PendingIntent sPendingIntent;
+    private static Activity sMainActivity;
 
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -90,7 +91,7 @@ public class AlarmsFragment extends Fragment {
             sHour = "0" + String.valueOf(hour);
         }
 
-        CustomSnackBar.makeErrorSnackBar(context, context.getResources().getString(R.string.alarm_set_on) + sHour + ":" + sMinute, false);
+        CustomSnackBar.makeErrorSnackBar(sMainActivity, context.getResources().getString(R.string.alarm_set_on) + sHour + ":" + sMinute, false);
         //Toast.makeText(context, context.getResources().getString(R.string.alarm_set_on)+ sHour + ":" + sMinute, Toast.LENGTH_LONG).show();
 
         sReceiverIntent.putExtra("extra", "alarm on");
@@ -118,6 +119,7 @@ public class AlarmsFragment extends Fragment {
             sReceiverIntent.putExtra("songId", 0);
             context.sendBroadcast(sReceiverIntent);
         }
+        CustomSnackBar.makeErrorSnackBar(sMainActivity, context.getResources().getString(R.string.alarm_cancelled), true);
     }
 
     @Override
@@ -129,6 +131,7 @@ public class AlarmsFragment extends Fragment {
 
         siema = ButterKnife.findById(rootView, R.id.nowy_alarm);
         mAlarmsLv = ButterKnife.findById(rootView, R.id.alarms_lv);
+        sMainActivity = getActivity();
 
         mAlarms = Alarm.getAllAlarms();
         mAdapter = new AlarmListAdapter(getActivity(), mAlarms);

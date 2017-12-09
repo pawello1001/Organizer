@@ -43,9 +43,6 @@ public class MainActivity extends BaseActivity implements LocationListener{
     private Location currentLocation;
     private LocationManager locationManager;
 
-    @BindView(R.id.activity_main_toolbar)
-    Toolbar mToolbar;
-
     @BindView(R.id.activity_main_viewpager)
     ViewPager mContainerVP;
 
@@ -59,12 +56,15 @@ public class MainActivity extends BaseActivity implements LocationListener{
 
         ButterKnife.bind(this);
         ActiveAndroid.initialize(this);
-        setSupportActionBar(mToolbar);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), TABS_COUNTER);
+        mContainerVP.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         mContainerVP.setAdapter(mSectionsPagerAdapter);
 
+        mTabsTL.setTabTextColors(getResources().getColor(R.color.ekri), getResources().getColor(R.color.colorPrimary));
+        mTabsTL.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorAccent));
         mTabsTL.setupWithViewPager(mContainerVP);
+
 
         getCurrentLocation();
     }
