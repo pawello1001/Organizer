@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.pawe.organizer.R;
@@ -38,7 +38,7 @@ import static android.content.Context.ALARM_SERVICE;
 
 public class AlarmsFragment extends Fragment {
 
-    private Button siema;
+    private ImageButton mAlarmAddIb;
     private ListView mAlarmsLv;
 
     private int hour;
@@ -55,6 +55,8 @@ public class AlarmsFragment extends Fragment {
     private static PendingIntent sPendingIntent;
     private static Activity sMainActivity;
 
+    private boolean isRegistered;
+
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -64,10 +66,18 @@ public class AlarmsFragment extends Fragment {
 
             float timePlaying = intent.getFloatExtra("timePlaying", 0);
 
-            sAlarm.setTimesCalled(sAlarm.getTimesCalled() + 1);
-            sAlarm.setLastUsed(curDate);
-            sAlarm.setTimePlayedCounter(sAlarm.getTimePlayedCounter() + timePlaying);
-            sAlarm.save();
+            if (timePlaying != 0) {
+                sAlarm.setTimesCalled(sAlarm.getTimesCalled() + 1);
+                sAlarm.setLastUsed(curDate);
+                sAlarm.setTimePlayedCounter(sAlarm.getTimePlayedCounter() + timePlaying);
+                sAlarm.save();
+                Log.d("TIME PLAYING", String.valueOf(sAlarm.getTimesCalled()));
+                Log.d("LAST USED", sAlarm.getLastUsed());
+                Log.d("AVERAGE TIME PLAYING", String.valueOf((float)(int)((sAlarm.getTimePlayedCounter() / sAlarm.getTimesCalled())*100f) / 100f));
+                LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(broadcastReceiver);
+                isRegistered = false;
+                return;
+            }
         }
     };
 
@@ -129,7 +139,7 @@ public class AlarmsFragment extends Fragment {
 
         ButterKnife.bind(rootView);
 
-        siema = ButterKnife.findById(rootView, R.id.nowy_alarm);
+        mAlarmAddIb = ButterKnife.findById(rootView, R.id.new_alarm_ib);
         mAlarmsLv = ButterKnife.findById(rootView, R.id.alarms_lv);
         sMainActivity = getActivity();
 
@@ -150,7 +160,7 @@ public class AlarmsFragment extends Fragment {
         });
 
 
-        siema.setOnClickListener(new View.OnClickListener() {
+        mAlarmAddIb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hour = -1;
@@ -172,12 +182,15 @@ public class AlarmsFragment extends Fragment {
         mAlarmsLv.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("NOW"));
+        if (!isRegistered) {
+            LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("NOW"));
+            isRegistered = true;
+        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(broadcastReceiver);
+        //LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(broadcastReceiver);
     }
 }

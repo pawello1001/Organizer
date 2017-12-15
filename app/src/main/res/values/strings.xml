@@ -3,7 +3,12 @@
     <string name="db_name">RestClient.db</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
+    <string name="address">ADDRESSES</string>
+    <string name="alarm">ALARMS</string>
+    <string name="note">NOTES</string>
+
     <string name="note_title">Title</string>
+    <string name="actual_address">CURRENT</string>
 
     <string name="note_alert_dialog_title">Enter new title</string>
     <string name="dialog_positive_button">OK</string>
@@ -21,6 +26,8 @@
     <string name="address_no_gps">Turn on GPS provider!</string>
     <string name="address_cannot_find">Cannot find current address</string>
     <string name="no_internet">No Internet connection</string>
+    <string name="address_set_address_name">Set address name</string>
+    <string name="note_set_note_name">Set note name</string>
 
     <string name="address_name">Current location</string>
     <string name="permission_granted">Permission granted</string>

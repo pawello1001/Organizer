@@ -42,7 +42,8 @@
     </style>
 
     <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:colorBackground">@color/ekri</item>
+        <item name="android:colorBackground">@android:color/background_dark</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
     </style>
 </resources>

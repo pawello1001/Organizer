@@ -1,18 +1,16 @@
 package com.example.pawe.organizer.flow.fragments;
 
 import android.content.DialogInterface;
-import android.location.Location;
-import android.location.LocationManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.pawe.organizer.R;
@@ -27,8 +25,8 @@ import butterknife.ButterKnife;
 public class AddressesFragment extends Fragment {
 
 
-    Button siemaMapy;
-    Button lokal;
+    ImageButton mAddresAddNewB;
+    Button mCurrentLocationB;
 
     private List<Address> mAddresses;
     private ListView mAddressesLv;
@@ -46,8 +44,8 @@ public class AddressesFragment extends Fragment {
         name = "";
         address = "";
 
-        siemaMapy = ButterKnife.findById(rootView, R.id.siemaMapy);
-        lokal = ButterKnife.findById(rootView, R.id.lokal);
+        mAddresAddNewB = ButterKnife.findById(rootView, R.id.new_address_ib);
+        mCurrentLocationB = ButterKnife.findById(rootView, R.id.current_address_b);
         mAddressesLv = ButterKnife.findById(rootView, R.id.addresses_lv);
 
         mAddresses = Address.getAllAddresses();
@@ -95,7 +93,7 @@ public class AddressesFragment extends Fragment {
             }
         });
 
-        siemaMapy.setOnClickListener(new View.OnClickListener() {
+        mAddresAddNewB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 name = "";
@@ -104,7 +102,7 @@ public class AddressesFragment extends Fragment {
             }
         });
 
-        lokal.setOnClickListener(new View.OnClickListener() {
+        mCurrentLocationB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).setCurrentAddress();

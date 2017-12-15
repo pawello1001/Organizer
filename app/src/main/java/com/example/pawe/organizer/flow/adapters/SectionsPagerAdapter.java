@@ -1,9 +1,11 @@
 package com.example.pawe.organizer.flow.adapters;
 
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.flow.fragments.AddressesFragment;
 import com.example.pawe.organizer.flow.fragments.AlarmsFragment;
 import com.example.pawe.organizer.flow.fragments.NotesFragment;
@@ -11,9 +13,11 @@ import com.example.pawe.organizer.flow.fragments.NotesFragment;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     private int mTabsCounter;
+    Activity mActivity;
 
-    public SectionsPagerAdapter(FragmentManager fragmentManager, int tabs) {
+    public SectionsPagerAdapter(Activity activity, FragmentManager fragmentManager, int tabs) {
         super(fragmentManager);
+        mActivity = activity;
         mTabsCounter = tabs;
     }
 
@@ -40,11 +44,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "ADDRESSES";
+                return mActivity.getResources().getString(R.string.address);
             case 1:
-                return "ALARMS";
+                return mActivity.getResources().getString(R.string.alarm);
             case 2:
-                return "NOTES";
+                return mActivity.getResources().getString(R.string.note);
             default:
                 return null;
         }

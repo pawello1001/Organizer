@@ -1,43 +1,29 @@
 package com.example.pawe.organizer.flow.fragments;
 
 import android.content.DialogInterface;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.pawe.organizer.R;
-import com.example.pawe.organizer.flow.activities.MainActivity;
 import com.example.pawe.organizer.flow.activities.SingleNoteActivity;
 import com.example.pawe.organizer.flow.adapters.NoteListAdapter;
 import com.example.pawe.organizer.models.Note;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class NotesFragment extends Fragment {
 
-    private Button siema;
+    private ImageButton mNoteAddNewIb;
 
     private ListView mNotesLv;
     private List<Note> mNotes;
@@ -56,7 +42,7 @@ public class NotesFragment extends Fragment {
         title = "";
         text = "";
 
-        siema = ButterKnife.findById(rootView, R.id.siema);
+        mNoteAddNewIb = ButterKnife.findById(rootView, R.id.new_note_ib);
         mNotesLv = ButterKnife.findById(rootView, R.id.notes_lv);
 
         mNotes = Note.getAllNotes();
@@ -103,7 +89,7 @@ public class NotesFragment extends Fragment {
             }
         });
 
-        siema.setOnClickListener(new View.OnClickListener() {
+        mNoteAddNewIb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 title = "";

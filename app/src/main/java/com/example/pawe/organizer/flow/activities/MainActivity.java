@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity implements LocationListener{
         ButterKnife.bind(this);
         ActiveAndroid.initialize(this);
 
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), TABS_COUNTER);
+        mSectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), TABS_COUNTER);
         mContainerVP.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         mContainerVP.setAdapter(mSectionsPagerAdapter);
 

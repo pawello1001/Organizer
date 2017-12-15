@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ekri">
+    android:background="@color/ekri"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/new_address_ib"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_add_location" />
 
     <Button
-        android:id="@+id/siemaMapy"
-        android:text="+"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/lokal"
+        android:id="@+id/current_address_b"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_margin="5dp"
-        android:text="aktualny"/>
+        android:drawableRight="@drawable/ic_address_actual"
+        android:text="@string/actual_address" />
 
     <ListView
         android:id="@+id/addresses_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:scrollbarStyle="outsideOverlay"
-        android:layout_below="@+id/lokal"
-        android:paddingBottom="@dimen/notes_lv_height"
+        android:layout_below="@+id/current_address_b"
+        android:divider="@color/black"
         android:dividerHeight="@dimen/notes_lv_divider_height"
-        android:divider="@color/black"/>
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical" />
 </RelativeLayout>

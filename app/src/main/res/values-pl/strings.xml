@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Organizer</string>
+    <string name="db_name">RestClient.db</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="address">ADRESY</string>
+    <string name="alarm">ALARMY</string>
+    <string name="note">NOTATKI</string>
+
+    <string name="note_title">Nazwa</string>
+    <string name="actual_address">AKTUALNY</string>
+
+    <string name="note_alert_dialog_title">Wprowadź nową nazwę</string>
+    <string name="dialog_positive_button">OK</string>
+    <string name="dialog_negative_button">Anuluj</string>
+    <string name="dialog_delete_note">Jesteś pewien, że chcesz usunąć wybraną notatkę?</string>
+    <string name="dialog_delete_note_title">Usuń notatkę</string>
+    <string name="dialog_delete_address">Jesteś pewien, że chcesz usunąć wybrany adres?</string>
+    <string name="dialog_delete_address_title">Usuń adres</string>
+    <string name="dialog_delete_alarm">Jesteś pewien, że checsz usunąć wybrany alarm?</string>
+    <string name="dialog_delete_alarm_title">Usuń alarm</string>
+
+    <string name="address_alert_dialog_name">Wprowadź nową nazwę</string>
+
+    <string name="address_error">Niepoprawny adres!</string>
+    <string name="address_no_gps">Włącz adapter GPS!</string>
+    <string name="address_cannot_find">Nie można odnaleźć aktualnego adresu</string>
+    <string name="no_internet">Brak połączenia internetowego</string>
+    <string name="address_set_address_name">Nadaj nazwę adresowi</string>
+    <string name="note_set_note_name">Nadaj nazwę notatce</string>
+
+    <string name="address_name">Aktualna lokalizacja</string>
+    <string name="permission_granted">Uprawnienia przyznane</string>
+    <string name="permission_denied">Uprawnienia nie zostały przyznane</string>
+
+    <string name="alarm_list_hour">Godzina</string>
+
+    <string name="alarm_set_on">Alarm ustawiony na godzinę: </string>
+    <string name="alarm_cancelled">Alarm anulowany</string>
+    <string name="alarm_turn_off">Wyłącz alarm!</string>
+    <string name="alarm_click_me">Wciśnij mnie!</string>
+
+    <string-array name="ringtones">
+        <item>Alarm</item>
+        <item>Apple Ring</item>
+        <item>Best Wake Up Sound</item>
+        <item>Car Lock</item>
+        <item>Extreme Alarm Clock</item>
+        <item>Morning Alarm</item>
+        <item>Real Loud Alarm</item>
+        <item>Russian Electro</item>
+        <item>Siren</item>
+        <item>Voo Voo SMS</item>
+    </string-array>
+
+    <string name="msg_pick_ringtone">Wybierz dzwonek</string>
+
+    <string name="address_stats_times_viewed">Wyświetleń na mapie: </string>
+    <string name="address_stats_distance">Odległość od aktualnego położenia: </string>
+    <string name="address_stats_date_created">Utworzono: </string>
+    <string name="address_stats_kilometers"> km</string>
+
+    <string name="note_stats_char_counter">Ilość wykorzystanych znaków: </string>
+    <string name="note_stats_date_created">Utworzono: </string>
+    <string name="note_stats_last_updated">Ostatnia aktualizacja: </string>
+
+    <string name="alarm_stats_times_called">Ilość wywołań: </string>
+    <string name="alarm_stats_last_used">Ostatni raz użyto: </string>
+    <string name="alarm_stats_avarage_time_play">Średnia czasu grania: </string>
+    <string name="alarm_stats_sec"> s</string>
+
+</resources>

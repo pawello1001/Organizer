@@ -18,7 +18,9 @@ import android.widget.TextView;
 import com.example.pawe.organizer.R;
 import com.example.pawe.organizer.flow.activities.SingleNoteActivity;
 import com.example.pawe.organizer.models.Note;
+import com.example.pawe.organizer.utils.CustomSnackBar;
 import com.example.pawe.organizer.utils.KeyboardHider;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 
 import java.text.SimpleDateFormat;
@@ -59,6 +61,7 @@ public class SingleNoteFragment extends Fragment {
 
 
         mNoteText.setText(text);
+        mNoteTitle.setHintTextColor(getResources().getColor(R.color.colorAccent));
         mNoteTitle.setText(title);
 
         mNoteText.addTextChangedListener(new TextWatcher() {
@@ -79,13 +82,16 @@ public class SingleNoteFragment extends Fragment {
         mNoteTitle.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
 
-                final EditText input = new EditText(getActivity());
+                final MaterialEditText input = new MaterialEditText(getActivity());
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
                 input.setLayoutParams(lp);
+                input.setPrimaryColor(getResources().getColor(R.color.colorAccent));
+                input.setMetTextColor(getResources().getColor(R.color.colorAccent));
+                input.setUnderlineColor(getResources().getColor(R.color.colorAccent));
 
                 alertDialog.setView(input);
                 alertDialog.setTitle(getString(R.string.note_alert_dialog_title));
@@ -123,25 +129,30 @@ public class SingleNoteFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 KeyboardHider.hideKeyboard(getActivity());
-                if (title.equals("") && text.equals("")) {
-                    Date date = Calendar.getInstance().getTime();
-                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                    String curDate = format.format(date);
-                    Note note = new Note(mNoteTitle.getText().toString(), mNoteText.getText().toString(), mNoteText.getText().length(), curDate, curDate);
-                    note.save();
+                if (mNoteTitle.getText().equals("")) {
+                    CustomSnackBar.makeErrorSnackBar(getActivity(), getString(R.string.note_set_note_name), true);
                 } else {
-                    Date date = Calendar.getInstance().getTime();
-                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-                    String curDate = format.format(date);
+                    if (title.equals("") && text.equals("")) {
+                        Date date = Calendar.getInstance().getTime();
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        String curDate = format.format(date);
+                        Note note = new Note(mNoteTitle.getText().toString(), mNoteText.getText().toString(), mNoteText.getText().length(), curDate, curDate);
+                        note.save();
+                    } else {
+                        Date date = Calendar.getInstance().getTime();
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                        String curDate = format.format(date);
 
-                    Note note = Note.getNote(title, text);
-                    note.setTitle(mNoteTitle.getText().toString());
-                    note.setText(mNoteText.getText().toString());
-                    note.setCharCounter(mNoteText.getText().length());
-                    note.setLastUpdated(curDate);
-                    note.save();
+                        Note note = Note.getNote(title, text);
+                        note.setTitle(mNoteTitle.getText().toString());
+                        note.setText(mNoteText.getText().toString());
+                        note.setCharCounter(mNoteText.getText().length());
+                        note.setLastUpdated(curDate);
+                        note.save();
+                    }
+                    getActivity().finish();
                 }
-                getActivity().finish();
+
             }
         });
 

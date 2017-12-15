@@ -50,19 +50,24 @@ public class SingleAddressFragment extends Fragment {
             name = extras.getString("name");
             address = extras.getString("address");
         }
+        mAddressName.setHintTextColor(getResources().getColor(R.color.colorAccent));
         mAddressName.setText(name);
+        mAddressMet.setMetTextColor(getResources().getColor(R.color.colorAccent));
         mAddressMet.setText(address);
 
         mAddressName.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
 
-                final EditText input = new EditText(getActivity());
+                final MaterialEditText input = new MaterialEditText(getActivity());
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
                 input.setLayoutParams(lp);
+                input.setPrimaryColor(getResources().getColor(R.color.colorAccent));
+                input.setMetTextColor(getResources().getColor(R.color.colorAccent));
+                input.setUnderlineColor(getResources().getColor(R.color.colorAccent));
 
                 alertDialog.setView(input);
                 alertDialog.setTitle(getString(R.string.address_alert_dialog_name));
@@ -98,21 +103,25 @@ public class SingleAddressFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 KeyboardHider.hideKeyboard(getActivity());
-                if (address.equals("")) {
-                    if (!OnlineChecker.isOnline(getActivity())) {
-                        CustomSnackBar.makeErrorSnackBar(getActivity(), getActivity().getResources().getString(R.string.no_internet), true);
-                    } else {
-                        address = mAddressMet.getText().toString();
-                        name = mAddressName.getText().toString();
-                        DataLongOperationAsynchTask task = new DataLongOperationAsynchTask(getActivity(), address, name);
-                        task.execute();
-                    }
+                if (mAddressName.getText().equals("")) {
+                    CustomSnackBar.makeErrorSnackBar(getActivity(), getString(R.string.address_set_address_name), true);
                 } else {
-                    Address addr = Address.getAddress(name, address);
-                    addr.setName(mAddressName.getText().toString());
-                    addr.setAddress(mAddressMet.getText().toString());
-                    addr.save();
-                    getActivity().finish();
+                    if (address.equals("")) {
+                        if (!OnlineChecker.isOnline(getActivity())) {
+                            CustomSnackBar.makeErrorSnackBar(getActivity(), getActivity().getResources().getString(R.string.no_internet), true);
+                        } else {
+                            address = mAddressMet.getText().toString();
+                            name = mAddressName.getText().toString();
+                            DataLongOperationAsynchTask task = new DataLongOperationAsynchTask(getActivity(), address, name);
+                            task.execute();
+                        }
+                    } else {
+                        Address addr = Address.getAddress(name, address);
+                        addr.setName(mAddressName.getText().toString());
+                        addr.setAddress(mAddressMet.getText().toString());
+                        addr.save();
+                        getActivity().finish();
+                    }
                 }
             }
         });
